@@ -1,9 +1,9 @@
 //Write a c++ program to implement ATM management system.
-#include <iostream>
+#include<iostream>
 using namespace std;
 class ATM{
 private:
-    long ac_no=132534298709;
+    long long ac_no=132534298709;
     int balance=1246379;
     char name[6]="Ahana";
     int pin=12345;
@@ -19,20 +19,19 @@ private:
         cout<<"Amount to be transferred is:";
         cin>>amt;
         int ch;
-        cout<<"1.Credit"<<endl<<"2.Debit"<<endl;
-        cout<<"Your Choice:"<< endl;
+        cout<<"1.Credit"<<endl<<"2.Debit"<<endl<<"Your Choice:";
         cin>>ch;
-        switch (ch) {
+        switch(ch) {
             case 1:
                 balance+=amt;
-                cout<<"The amount is credited."<<endl;
+                cout<<"\nThe amount is credited."<<endl;
                 break;
             case 2:
                 balance-=amt;
-                cout<<"The amount is debited."<<endl;
+                cout<<"\nThe amount is debited."<<endl;
                 break;
             default:
-                cout<<"ERROR."<<endl;
+                cout<<"\nERROR!"<<endl;
         }
     }
     void viewbalance(){
@@ -43,13 +42,13 @@ public:
         int p;
         cout<<"Enter pin:";
         cin>>p;
-        if (p==pin){
-            while (1) {
+        l1:
+        if(p==pin){
+            while(1) {
                 int c;
-                cout << "1.Withdraw" << endl << "2.View Balance"<< endl << "3.Transfer" << endl << "4.Exit" << endl;
-                cout << "Enter Choice:";
-                cin >> c;
-                switch (c) {
+                cout<<"1.Withdraw"<<endl<<"2.View Balance"<<endl<<"3.Transfer"<<endl<<"4.Exit"<<endl<<"Enter Choice:";
+                cin>>c;
+                switch(c) {
                     case 1:
                         withdraw();
                         break;
@@ -60,16 +59,20 @@ public:
                         transfer();
                         break;
                     case 4:
-                        cout << "END!";
+                        cout<<"END!";
                         exit(0);
                     default:
-                        cout << "ERROR!" << endl;
+                        cout<<"ERROR!"<<endl;
                 }
             }
         }
+        else{
+            cout<<"Wrong pin. Try again!";
+            goto l1;
+        }
     }
     void display(){
-        cout << "Account number:" << ac_no <<endl<< "Name:" << name << endl;
+        cout<<"Account number:"<<ac_no<<endl<<"Name:"<<name<<endl;
     }
 };
 int main(){
